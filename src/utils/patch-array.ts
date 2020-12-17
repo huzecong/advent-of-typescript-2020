@@ -11,13 +11,16 @@ declare global {
     zip<U>(xs: U[]): [T, U][];
     zip(...xss: T[][]): T[][];
 
-    mapFilter<R>(fn: (value:  T, index: number) => R|null): R[];
+    mapFilter<R>(fn: (value:  T, index: number) => R | null): R[];
 
     count(elem: T): number;
 
     combinations(k: 2): [T, T][];
     combinations(k: 3): [T, T, T][];
     combinations(k: number): T[][];
+
+    fold(fn: (acc: T, value: T, index: number) => T): T[];
+    fold<R>(fn: (acc: R, value: T, index: number) => R, init: R): R[];
   }
 }
 
@@ -34,7 +37,7 @@ Array.prototype.zip = function (...xss: any) {
 }
 
 Array.prototype.mapFilter = function (fn) {
-  return ArrayUtils.mapFilter(fn, this)
+  return ArrayUtils.mapFilter(this, fn)
 }
 
 Array.prototype.count = function<T> (this: Array<T>, elem: T): number {
@@ -48,4 +51,8 @@ Array.prototype.count = function<T> (this: Array<T>, elem: T): number {
 Array.prototype.combinations = function (k: number) {
   // @ts-ignore
   return ArrayUtils.combinations(this, k)
+}
+
+Array.prototype.fold = function (fn: any, init?: any) {
+  return ArrayUtils.fold(this, fn, init)
 }

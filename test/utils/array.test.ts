@@ -1,6 +1,7 @@
 import {expect} from 'chai'
+import _ from 'lodash'
 
-import {array, cartesianProduct, combinations, mapFilter, product, zip, zipShortest} from '../../src/utils'
+import {array, cartesianProduct, combinations, fold, mapFilter, product, zip, zipShortest} from '../../src/utils'
 
 describe('utils/array', () => {
   describe('cartesianProduct', () => {
@@ -31,7 +32,7 @@ describe('utils/array', () => {
 
   describe('mapFilter', () => {
     it('should filter out null values', () =>
-      expect(mapFilter(x => x % 2 === 0 ? x : null, [1, 2, 3, 4])).to.deep.equal([2, 4]))
+      expect(mapFilter([1, 2, 3, 4], x => x % 2 === 0 ? x : null)).to.deep.equal([2, 4]))
   })
 
   describe('array', () => {
@@ -61,5 +62,12 @@ describe('utils/array', () => {
       expect(product([1, 2, 3, 4])).to.equal(24))
     it('should return 1 for empty list', () =>
       expect(product([])).to.equal(1))
+  })
+
+  describe('fold', () => {
+    it('should act as prefix sum when using add', () =>
+      expect(fold([1, 2, 3, 4], _.add)).to.deep.equal([1, 3, 6, 10]))
+    it('should take an initial value', () =>
+      expect(fold([3, 2, 1, 0], _.multiply, 2)).to.deep.equal([2, 6, 12, 12, 0]))
   })
 })

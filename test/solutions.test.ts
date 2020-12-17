@@ -23,5 +23,6 @@ describe('solutions', () => {
   checkDay(6, 6775, 3356)
   checkDay(7, 224, 1488)
   checkDay(8, 1563, 767)
+  checkDay(9, 217430975, 28509180)
   checkDay(14, 13727901897109, 5579916171823)
 })

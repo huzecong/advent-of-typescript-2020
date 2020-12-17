@@ -38,7 +38,7 @@ export function zip<T>(...xss: T[][]): T[][] {
 /**
  * Apply map to array and then filter out all null values.
  */
-export function mapFilter<T, R>(fn: (value: T, index: number) => R | null, xs: T[]): R[] {
+export function mapFilter<T, R>(xs: T[], fn: (value: T, index: number) => R | null): R[] {
   return xs.map(fn).filter(x => x !== null) as R[]
 }
 
@@ -77,4 +77,21 @@ export function combinations<T>(xs: T[], k: number): T[][] {
 
 export function product(xs: number[]): number {
   return xs.reduce((acc, x) => acc * x, 1)
+}
+
+/**
+ * Similar to `reduce`, but returns all intermediate values as a list. Equivalent to Haskell `foldl`.
+ * For example, prefix sum can be implemented as `fold(xs, _.add)`.
+ */
+export function fold<T>(xs: T[], fn: (acc: T, value: T, index: number) => T): T[]
+export function fold<T, R>(xs: T[], fn: (acc: R, value: T, index: number) => R, init: R): R[]
+export function fold(xs: any[], fn: (arg0: any, arg1: any, arg2: any) => any, init?: any) {
+  const ret: any[] = []
+  if (init !== undefined) ret.push(init)
+  xs.reduce((acc, x, index) => {
+    const val = fn(acc, x, index)
+    ret.push(val)
+    return val
+  }, init)
+  return ret
 }
