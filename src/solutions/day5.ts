@@ -13,20 +13,20 @@ export default class Day5 extends Solution {
     this.seatNumbers = this.passes.map(pass => this.getSeatNumber(pass))
   }
 
-  private getPosition(description: string, min: number, max: number, leftChar: string, rightChar: string): number {
+  private getPosition(description: string, min: number, max: number, chars: string): number {
     let [l, r] = [min, max]
     for (const c of description) {
       const mid = Math.floor((l + r) / 2)
-      if (c === leftChar) r = mid
-      else if (c === rightChar) l = mid + 1
+      if (c === chars[0]) r = mid
+      else if (c === chars[1]) l = mid + 1
       else throw new Error(`Bad character '${c}'`)
     }
     return l
   }
 
   private getSeat(pass: string): [number, number] {
-    const row = this.getPosition(pass.substr(0, 7), 0, 127, 'F', 'B')
-    const col = this.getPosition(pass.substr(7), 0, 7, 'L', 'R')
+    const row = this.getPosition(pass.substr(0, 7), 0, 127, 'FB')
+    const col = this.getPosition(pass.substr(7), 0, 7, 'LR')
     return [row, col]
   }
 
