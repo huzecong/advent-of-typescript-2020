@@ -1,4 +1,5 @@
 import fs from 'fs'
+import {performance} from 'perf_hooks'
 
 export default abstract class Solution {
   protected readonly input: string;
@@ -12,12 +13,17 @@ export default abstract class Solution {
 
   protected abstract solvePart2(): number;
 
-  solve(part: 1 | 2): number {
-    if (part === 1) return this.solvePart1()
-    return this.solvePart2()
+  solve(part: 1 | 2, profile = false): number {
+    const start = performance.now()
+    const result = part === 1 ? this.solvePart1() : this.solvePart2()
+    if (profile) {
+      const time = (performance.now() - start) / 1000
+      console.log(`Part ${part} took ${time.toFixed(3)}s`)
+    }
+    return result
   }
 
-  solveBoth(): [number, number] {
-    return [this.solvePart1(), this.solvePart2()]
+  solveBoth(profile = false): [number, number] {
+    return [this.solve(1, profile), this.solve(2, profile)]
   }
 }

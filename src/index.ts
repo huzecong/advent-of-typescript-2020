@@ -11,6 +11,7 @@ import Day7 from './solutions/day7'
 import Day8 from './solutions/day8'
 import Day9 from './solutions/day9'
 import Day10 from './solutions/day10'
+import Day11 from './solutions/day11'
 import Day14 from './solutions/day14'
 
 class AdventOfCode extends Command {
@@ -23,6 +24,7 @@ class AdventOfCode extends Command {
     part1: flags.boolean({description: 'Solve part 1 only', exclusive: ['part2', 'both']}),
     part2: flags.boolean({description: 'Solve part 2 only', exclusive: ['part1', 'both']}),
     both: flags.boolean({description: 'Solve both parts', exclusive: ['part1', 'part2'], default: true}),
+    profile: flags.boolean({description: 'Profile run time'}),
   }
 
   static args = [
@@ -41,6 +43,7 @@ class AdventOfCode extends Command {
     day8: (file: string) => new Day8(file),
     day9: (file: string) => new Day9(file),
     day10: (file: string) => new Day10(file),
+    day11: (file: string) => new Day11(file),
     day14: (file: string) => new Day14(file),
   }
 
@@ -53,10 +56,14 @@ class AdventOfCode extends Command {
       const inputPath = args.input ?? `inputs/${args.problem}.txt`
       const solver = AdventOfCode.solvers[args.problem](inputPath)
       this.log(`Solving problem ${args.problem}`)
-      if (flags.part1 || flags.both)
-        this.log(`Part 1 answer: ${solver.solve(1)}`)
-      if (flags.part2 || flags.both)
-        this.log(`Part 2 answer: ${solver.solve(2)}`)
+      if (flags.part1 || flags.both) {
+        const answer = solver.solve(1, flags.profile)
+        this.log(`Part 1 answer: ${answer}`)
+      }
+      if (flags.part2 || flags.both) {
+        const answer = solver.solve(2, flags.profile)
+        this.log(`Part 2 answer: ${answer}`)
+      }
     } catch (error) {
       this.error(error.stack)
     }

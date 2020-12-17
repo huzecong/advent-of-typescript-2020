@@ -4,6 +4,8 @@ import _ from 'lodash'
  * Return the Cartesian product of the lists. Equivalent to Python `itertools.product`.
  * @returns A list of products, each a list of elements that's taken from each of the input lists.
  */
+export function cartesianProduct<A, B>(xs: A[], ys: B[]): [A, B][]
+export function cartesianProduct<A, B, C>(xs: A[], ys: B[], zs: C[]): [A, B, C][]
 export function cartesianProduct<T>(...xss: T[][]): T[][]
 export function cartesianProduct(...xss: any[][]): any[][]
 export function cartesianProduct<T>(...xss: T[][]): T[][] {
