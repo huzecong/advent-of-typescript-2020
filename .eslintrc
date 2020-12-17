@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "oclif",
+    "oclif-typescript"
+  ],
+  "plugins": [
+    "simple-import-sort"
+  ],
+  "rules": {
+    "valid-jsdoc": "off",
+    "sort-imports": "off",
+    "import/order": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  }
+}
