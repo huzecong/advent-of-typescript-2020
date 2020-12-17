@@ -22,9 +22,9 @@ export default class Day4 extends Solution {
       if (height.endsWith('in')) return inRange(int(Utils.removeSuffix(height, 'in')), 59, 76)
       return false
     },
-    hcl: color => /#[0-9a-f]{6}/.test(color),
+    hcl: color => /^#[0-9a-f]{6}$/.test(color),
     ecl: color => ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(color),
-    pid: id => /\d{9}/.test(id),
+    pid: id => /^\d{9}$/.test(id),
   }
 
   constructor(inputPath: string) {
