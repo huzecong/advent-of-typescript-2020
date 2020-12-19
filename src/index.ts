@@ -12,6 +12,7 @@ import Day8 from './solutions/day8'
 import Day9 from './solutions/day9'
 import Day10 from './solutions/day10'
 import Day11 from './solutions/day11'
+import Day12 from './solutions/day12'
 import Day14 from './solutions/day14'
 
 class AdventOfCode extends Command {
@@ -44,6 +45,7 @@ class AdventOfCode extends Command {
     day9: (file: string) => new Day9(file),
     day10: (file: string) => new Day10(file),
     day11: (file: string) => new Day11(file),
+    day12: (file: string) => new Day12(file),
     day14: (file: string) => new Day14(file),
   }
 
