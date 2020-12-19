@@ -1,7 +1,17 @@
 import {expect} from 'chai'
 import _ from 'lodash'
 
-import {array, cartesianProduct, combinations, fold, mapFilter, product, zip, zipShortest} from '../../src/utils'
+import {
+  array,
+  arrayFactory,
+  cartesianProduct,
+  combinations,
+  fold,
+  mapFilter,
+  product,
+  zip,
+  zipShortest,
+} from '../../src/utils'
 
 describe('utils/array', () => {
   describe('cartesianProduct', () => {
@@ -42,6 +52,15 @@ describe('utils/array', () => {
       expect(array('a', 0)).to.deep.equal([]))
     it('should error if n < 0', () =>
       expect(() => array('a', -1)).to.throw('non-negative'))
+  })
+
+  describe('arrayFactory', () => {
+    it('should call the factory function n times', () => {
+      const arr = arrayFactory(() => array('a', 5), 4)
+      expect(arr).to.deep.equal(array(array('a', 5), 4))
+      arr[0][0] = 'b'
+      expect([arr[1][0], arr[2][0], arr[3][0]]).to.deep.equal(['a', 'a', 'a'])
+    })
   })
 
   describe('combinations', () => {

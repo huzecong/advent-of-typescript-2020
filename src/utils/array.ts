@@ -40,8 +40,8 @@ export function zip<T>(...xss: T[][]): T[][] {
 /**
  * Apply map to array and then filter out all null values.
  */
-export function mapFilter<T, R>(xs: T[], fn: (value: T, index: number) => R | null): R[] {
-  return xs.map(fn).filter(x => x !== null) as R[]
+export function mapFilter<T, R>(xs: T[], fn: (value: T, index: number) => R | null | undefined): R[] {
+  return xs.map(fn).filter(x => x !== null && x !== undefined) as R[]
 }
 
 /**
@@ -50,6 +50,14 @@ export function mapFilter<T, R>(xs: T[], fn: (value: T, index: number) => R | nu
 export function array<T>(value: T, length: number): T[] {
   if (length < 0) throw new Error('Length must be non-negative')
   return Array.from({length: length}).fill(value) as T[]
+}
+
+/**
+ * Create an array with `length` elements, each being a result from the factory function.
+ */
+export function arrayFactory<T>(factory: () => T, length: number): T[] {
+  if (length < 0) throw new Error('Length must be non-negative')
+  return Array.from({length: length}).map(_ => factory())
 }
 
 /**

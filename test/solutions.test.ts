@@ -2,15 +2,19 @@ import {expect} from 'chai'
 
 import AdventOfCode = require('../src')
 
-function checkDay(day: number, part1: number, part2: number) {
+function checkDay(day: number, part1: number, part2: number, timeout?: number) {
   const tag = `day${day}`
   const inputPath = `inputs/${tag}.txt`
   describe(tag, () => {
     const solver = AdventOfCode.solvers[tag](inputPath)
-    it('should return the correct answer for part 1', () =>
+    const test1 = it('should return the correct answer for part 1', () =>
       expect(solver.solve(1)).to.equal(part1))
-    it('should return the correct answer for part 2', () =>
+    const test2 = it('should return the correct answer for part 2', () =>
       expect(solver.solve(2)).to.equal(part2))
+    if (timeout !== undefined) {
+      test1.timeout(timeout)
+      test2.timeout(timeout)
+    }
   })
 }
 
@@ -29,5 +33,6 @@ describe('solutions', () => {
   checkDay(12, 845, 27016)
   checkDay(13, 4938, 230903629977901)
   checkDay(14, 13727901897109, 5579916171823)
-  checkDay(15, 260, 950)
+  checkDay(15, 260, 950, 10000)
+  checkDay(16, 26980, 3021381607403)
 })

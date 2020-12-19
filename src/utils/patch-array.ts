@@ -11,7 +11,7 @@ declare global {
     zip<U>(xs: U[]): [T, U][];
     zip(...xss: T[][]): T[][];
 
-    mapFilter<R>(fn: (value:  T, index: number) => R | null): R[];
+    mapFilter<R>(fn: (value:  T, index: number) => R | null | undefined): R[];
 
     count(elem: T): number;
 
