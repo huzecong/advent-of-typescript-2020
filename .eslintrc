@@ -12,8 +12,16 @@
     "import/order": "off",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
+    "new-cap": [
+      "warn",
+      {
+        "capIsNewExceptions": [
+          "BigInt"
+        ]
+      }
+    ],
     "no-mixed-operators": [
-      "error",
+      "warn",
       {
         "groups": [
           [

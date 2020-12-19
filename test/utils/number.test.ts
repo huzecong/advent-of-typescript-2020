@@ -1,6 +1,6 @@
 import {expect} from 'chai'
 
-import {int, rectify} from '../../src/utils'
+import {chineseRemainderTheorem, exgcd, int, rectify} from '../../src/utils'
 
 describe('utils/number', () => {
   describe('int', () => {
@@ -21,5 +21,15 @@ describe('utils/number', () => {
       expect(rectify(-3, 4)).to.equal(1)
       expect(rectify(-13, 4)).to.equal(3)
     })
+  })
+
+  describe('exgcd', () => {
+    it('should be correct', () =>
+      expect(exgcd(240, 46)).to.have.members([-9, 47]))
+  })
+
+  describe('chineseRemainderTheorem', () => {
+    it('should be correct', () =>
+      expect(chineseRemainderTheorem([[3, 2], [5, 3], [7, 2]])).to.equal(23))
   })
 })
