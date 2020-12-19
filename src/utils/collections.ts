@@ -6,8 +6,8 @@ export class DefaultDict<K, V> extends Map<K, V> {
     this.factory = factory
   }
 
-  get(key: K): V | undefined {
-    if (this.has(key)) return super.get(key)
+  get(key: K): V {
+    if (this.has(key)) return super.get(key)!
     const value = this.factory()
     this.set(key, value)
     return value

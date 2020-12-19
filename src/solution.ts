@@ -18,6 +18,7 @@ export default abstract class Solution {
     const result = part === 1 ? this.solvePart1() : this.solvePart2()
     if (profile) {
       const time = (performance.now() - start) / 1000
+      // eslint-disable-next-line no-console
       console.log(`Part ${part} took ${time.toFixed(3)}s`)
     }
     return result
