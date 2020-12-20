@@ -1,32 +1,18 @@
-advent-of-code
-==============
+# Advent of Code 2020
 
+Solutions to [Advent of Code 2020](https://adventofcode.com/2020), implemented in TypeScript.
 
-
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/advent-of-code.svg)](https://npmjs.org/package/advent-of-code)
-[![Downloads/week](https://img.shields.io/npm/dw/advent-of-code.svg)](https://npmjs.org/package/advent-of-code)
-[![License](https://img.shields.io/npm/l/advent-of-code.svg)](https://github.com/huzecong/advent-of-code/blob/master/package.json)
-
-<!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
-<!-- tocstop -->
-# Usage
-<!-- usage -->
-```sh-session
-$ npm install -g advent-of-code
-$ advent-of-code COMMAND
-running command...
-$ advent-of-code (-v|--version|version)
-advent-of-code/0.0.0 darwin-x64 node-v15.2.0
-$ advent-of-code --help [COMMAND]
-USAGE
-  $ advent-of-code COMMAND
-...
+To run:
+```bash
+$ npm i
+$ ./bin/run/ day1 --profile
+Solving problem day1
+Part 1 took 0.000s
+Part 1 answer: 970816
+Part 2 took 0.011s
+Part 2 answer: 96047280
 ```
-<!-- usagestop -->
-# Commands
-<!-- commands -->
-
-<!-- commandsstop -->
+Or, verify all solutions through unit tests:
+```bash
+$ npm test
+```
