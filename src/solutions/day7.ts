@@ -58,7 +58,7 @@ export default class Day7 extends Solution {
 
   protected solvePart2(): number {
     return this.tree.eval<number>((_node, children) =>
-      1 + _.sum(children.map(c => c.edge * c.value))
+      1 + _.sum(children.map(c => c.edge * c.value)),
     ).get('shiny gold')! - 1
   }
 }

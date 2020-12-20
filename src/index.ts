@@ -2,7 +2,6 @@ import {Command, flags} from '@oclif/command'
 
 import Solution from './solution'
 import Day1 from './solutions/day1'
-import Day19 from './solutions/day19'
 import Day2 from './solutions/day2'
 import Day3 from './solutions/day3'
 import Day4 from './solutions/day4'
@@ -20,6 +19,7 @@ import Day15 from './solutions/day15'
 import Day16 from './solutions/day16'
 import Day17 from './solutions/day17'
 import Day18 from './solutions/day18'
+import Day19 from './solutions/day19'
 
 class AdventOfCode extends Command {
   static description = 'Solve Advent of Code 2020 problems'

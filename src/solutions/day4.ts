@@ -44,7 +44,7 @@ export default class Day4 extends Solution {
 
   protected solvePart2(): number {
     return this.getValidPassports().filter(
-      passport => _.entries(Day4.fieldValidators).every(([key, validator]) => validator(passport.get(key)!))
+      passport => _.entries(Day4.fieldValidators).every(([key, validator]) => validator(passport.get(key)!)),
     ).length
   }
 }
