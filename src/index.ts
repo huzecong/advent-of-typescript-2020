@@ -2,6 +2,7 @@ import {Command, flags} from '@oclif/command'
 
 import Solution from './solution'
 import Day1 from './solutions/day1'
+import Day19 from './solutions/day19'
 import Day2 from './solutions/day2'
 import Day3 from './solutions/day3'
 import Day4 from './solutions/day4'
@@ -57,6 +58,7 @@ class AdventOfCode extends Command {
     day16: (file: string) => new Day16(file),
     day17: (file: string) => new Day17(file),
     day18: (file: string) => new Day18(file),
+    day19: (file: string) => new Day19(file),
   }
 
   async run() {
