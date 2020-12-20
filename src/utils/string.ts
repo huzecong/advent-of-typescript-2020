@@ -14,3 +14,15 @@ export function countChar(s: string, char: string): number {
     if (c === char) ++cnt
   return cnt
 }
+
+export function isNumeric(s: string): boolean {
+  for (let i = 0; i < s.length; ++i) {
+    const x = s.charCodeAt(i)
+    if (x < 48 || x > 57) return false
+  }
+  return true
+}
+
+export function isWhitespace(s: string): boolean {
+  return /^\s*$/.test(s)
+}
