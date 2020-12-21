@@ -9,11 +9,11 @@ export default abstract class Solution {
     this.input = file.toString().trim()
   }
 
-  protected abstract solvePart1(): number;
+  protected abstract solvePart1(): number | string;
 
-  protected abstract solvePart2(): number;
+  protected abstract solvePart2(): number | string;
 
-  solve(part: 1 | 2, profile = false): number {
+  solve(part: 1 | 2, profile = false): string {
     const start = performance.now()
     const result = part === 1 ? this.solvePart1() : this.solvePart2()
     if (profile) {
@@ -21,10 +21,10 @@ export default abstract class Solution {
       // eslint-disable-next-line no-console
       console.log(`Part ${part} took ${time.toFixed(3)}s`)
     }
-    return result
+    return result.toString()
   }
 
-  solveBoth(profile = false): [number, number] {
+  solveBoth(profile = false): [string, string] {
     return [this.solve(1, profile), this.solve(2, profile)]
   }
 }

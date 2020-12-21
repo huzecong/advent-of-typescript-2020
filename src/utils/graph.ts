@@ -74,7 +74,7 @@ export function createGraph<TNode, TEdge>(directed = true): Graph<TNode, TEdge> 
 /**
  * Compute maximal matching of a bipartite graph using the Hungarian algorithm.
  */
-export function maximalMatching<TEdge>(graph: BipartiteGraph<TEdge>): Map<NodeId, NodeId> {
+export function maximalMatching(graph: BipartiteGraph): Map<NodeId, NodeId> {
   if (graph.directed) throw new Error('The bipartite graph should not be directed')
   const leftNodes = graph.getAllNodes().filter(node => node.data === 'left').map(node => node.id)
   const match: Map<NodeId, NodeId> = new Map()

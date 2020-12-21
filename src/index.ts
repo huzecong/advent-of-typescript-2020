@@ -20,6 +20,7 @@ import Day16 from './solutions/day16'
 import Day17 from './solutions/day17'
 import Day18 from './solutions/day18'
 import Day19 from './solutions/day19'
+import Day21 from './solutions/day21'
 
 class AdventOfCode extends Command {
   static description = 'Solve Advent of Code 2020 problems'
@@ -59,6 +60,7 @@ class AdventOfCode extends Command {
     day17: (file: string) => new Day17(file),
     day18: (file: string) => new Day18(file),
     day19: (file: string) => new Day19(file),
+    day21: (file: string) => new Day21(file),
   }
 
   async run() {
