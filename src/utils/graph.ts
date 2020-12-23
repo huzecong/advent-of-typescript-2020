@@ -3,10 +3,7 @@ import {default as _createGraph, Link, Node, NodeId} from 'ngraph.graph'
 
 import {mapFilter} from './array'
 
-type BipartiteSide = 'left' | 'right'
-export type BipartiteGraph<TEdge = any> = Graph<BipartiteSide, TEdge>
-
-interface Graph<TNode, TEdge> extends Omit<ngraph.Graph<TNode, TEdge>, 'addNode' | 'addLink'> {
+export interface Graph<TNode, TEdge> extends Omit<ngraph.Graph<TNode, TEdge>, 'addNode' | 'addLink'> {
   directed: boolean;
   addNode(node: NodeId, data?: TNode): this;
   addLink(from: NodeId, to: NodeId, data?: TEdge): this;
@@ -15,6 +12,9 @@ interface Graph<TNode, TEdge> extends Omit<ngraph.Graph<TNode, TEdge>, 'addNode'
   getLinks(nodeId: NodeId): Link<TEdge>[];
   getNodesLinkedTo(node: NodeId): Node<TNode>[];
 }
+
+type BipartiteSide = 'left' | 'right'
+export type BipartiteGraph<TEdge = any> = Graph<BipartiteSide, TEdge>
 
 /**
  * Create a directed graph.

@@ -1,4 +1,4 @@
-/* eslint-disable no-extend-native, @typescript-eslint/ban-ts-ignore */
+/* eslint-disable no-extend-native */
 import * as ArrayUtils from './array'
 
 export {}

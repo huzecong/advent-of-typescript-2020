@@ -95,7 +95,7 @@ export function product(xs: number[]): number {
  */
 export function fold<T>(xs: T[], fn: (acc: T, value: T, index: number) => T): T[]
 export function fold<T, R>(xs: T[], fn: (acc: R, value: T, index: number) => R, init: R): R[]
-export function fold(xs: any[], fn: (arg0: any, arg1: any, arg2: any) => any, init?: any) {
+export function fold(xs: any[], fn: (arg0: any, arg1: any, arg2: any) => any, init?: any): any[] {
   const ret: any[] = []
   if (init !== undefined) ret.push(init)
   xs.reduce((acc, x, index) => {
