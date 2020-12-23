@@ -40,4 +40,5 @@ describe('solutions', () => {
   checkDay(19, 156, 363)
   checkDay(20, 79412832860579, 2155)
   checkDay(21, 2098, 'ppdplc,gkcplx,ktlh,msfmt,dqsbql,mvqkdj,ggsz,hbhsx')
+  checkDay(22, 35370, 36246)
 })
