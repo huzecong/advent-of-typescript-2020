@@ -1,8 +1,8 @@
 import {product} from './array'
 
-export function int(x: string | bigint): number {
+export function int(num: string | bigint): number {
   // @ts-ignore
-  return parseInt(x, 10)
+  return parseInt(num, 10)
 }
 
 /**

@@ -18,6 +18,11 @@ export class DefaultDict<K, V> extends Map<K, V> {
     this.set(key, value)
     return value
   }
+
+  update(key: K, fn: (value: V) => V): void {
+    const value = this.get(key)
+    this.set(key, fn(value))
+  }
 }
 
 /**
