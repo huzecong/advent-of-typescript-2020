@@ -19,7 +19,7 @@ class Tree<Node, Edge> {
       if (result.has(node)) return result.get(node)
       const children =
         [...tree.get(node)!.entries()]
-        .map(([child, edge]) => ({edge: edge, value: visit(child)}))
+          .map(([child, edge]) => ({edge: edge, value: visit(child)}))
       const value = fn(node, children)
       result.set(node, value)
       return value
@@ -43,8 +43,8 @@ export default class Day7 extends Solution {
       } else {
         const contents =
         removeSuffix(desc, '.').split(', ')
-        .map(s => /^(\d+) ([a-z ]+) bags?$/.exec(s)!)
-        .map(match => [match[2], int(match[1])] as [string, number])
+          .map(s => /^(\d+) ([a-z ]+) bags?$/.exec(s)!)
+          .map(match => [match[2], int(match[1])] as [string, number])
         tree.set(color, new Map(contents))
       }
     }

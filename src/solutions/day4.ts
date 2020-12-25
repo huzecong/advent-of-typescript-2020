@@ -31,7 +31,7 @@ export default class Day4 extends Solution {
     super(inputPath)
     this.passports =
       this.input.split('\n\n')
-      .map(s => new Map(s.split(/\s+/).map(s => s.split(':') as [string, string])))
+        .map(s => new Map(s.split(/\s+/).map(s => s.split(':') as [string, string])))
   }
 
   private getValidPassports(): Passport[] {

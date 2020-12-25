@@ -21,11 +21,11 @@ export default class Day16 extends Solution {
     const [rules, myTicket, tickets] = this.input.split('\n\n')
     this.rules = _.fromPairs(
       rules.split('\n')
-      .map(s => /(.+?): (\d+)-(\d+) or (\d+)-(\d+)/.exec(s)!)
-      .map(g => {
-        const [l1, r1, l2, r2] = g.slice(2).map(int)
-        return [g[1], new Set(_.concat(_.range(l1, r1 + 1), _.range(l2, r2 + 1)))]
-      }))
+        .map(s => /(.+?): (\d+)-(\d+) or (\d+)-(\d+)/.exec(s)!)
+        .map(g => {
+          const [l1, r1, l2, r2] = g.slice(2).map(int)
+          return [g[1], new Set(_.concat(_.range(l1, r1 + 1), _.range(l2, r2 + 1)))]
+        }))
     this.validNumbers = new Set(_.flatten(_.values(this.rules).map(set => [...set])))
     this.myTicket = myTicket.split('\n')[1].split(',').map(int)
     this.tickets = tickets.split('\n').slice(1).map(s => s.split(',').map(int))

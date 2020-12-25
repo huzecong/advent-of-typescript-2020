@@ -16,13 +16,13 @@ export default class Day2 extends Solution {
     super(inputPath)
     this.entries =
       this.input.split('\n')
-      .map(x => /(\d+)-(\d+) (\w): (.+)/.exec(x)!)
-      .map(match => ({
-        lower: int(match[1]),
-        upper: int(match[2]),
-        letter: match[3],
-        password: match[4],
-      }))
+        .map(x => /(\d+)-(\d+) (\w): (.+)/.exec(x)!)
+        .map(match => ({
+          lower: int(match[1]),
+          upper: int(match[2]),
+          letter: match[3],
+          password: match[4],
+        }))
   }
 
   protected solvePart1(): number {

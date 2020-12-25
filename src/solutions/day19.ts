@@ -43,7 +43,7 @@ export default class Day19 extends Solution {
     for (const subRule of rule.value) {
       const curStrings =
         utils.cartesianProduct(...subRule.map(rule => this.getValidStrings(rule)))
-        .map(strs => strs.join(''))
+          .map(strs => strs.join(''))
       strings.push(...curStrings)
     }
     return _.uniq(strings)

@@ -31,7 +31,7 @@ export default class Day17 extends Solution {
   private solveND(dimensions: number): number {
     const directions =
       utils.cartesianProduct(...utils.array([-1, 0, 1], dimensions))
-      .filter(ds => ds.some(d => d !== 0))
+        .filter(ds => ds.some(d => d !== 0))
     let points: Set<Point> = new Set(
       this.cubes.map(([x, y]) => toPoint([...utils.array(0, dimensions - 2), x, y])))
     for (const _it of _.range(6)) {

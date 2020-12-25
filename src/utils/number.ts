@@ -35,6 +35,6 @@ export function chineseRemainderTheorem(equations: [number, number][]): number {
   const rmod = mod.map(m => Math.floor(M / m))
   const T = mod.zip(rmod).map(([m, r]) => rectify(exgcd(r, m)[0], m))
   return   remainder.zip(rmod, T)
-  .map(([a, r, t]) => int(BigInt(a * r) * BigInt(t) % BigInt(M)))
-  .reduce((acc, x) => (acc + x) % M)
+    .map(([a, r, t]) => int(BigInt(a * r) * BigInt(t) % BigInt(M)))
+    .reduce((acc, x) => (acc + x) % M)
 }

@@ -17,7 +17,7 @@ describe('utils/array', () => {
   describe('cartesianProduct', () => {
     it('should compute the Cartesian product', () =>
       expect(cartesianProduct(['a', 'b'], [1], [true, false]))
-      .to.deep.equal([['a', 1, true], ['a', 1, false], ['b', 1, true], ['b', 1, false]]))
+        .to.deep.equal([['a', 1, true], ['a', 1, false], ['b', 1, true], ['b', 1, false]]))
     it('should return an empty array if passed no arguments', () =>
       expect(cartesianProduct()).to.deep.equal([]))
     it('should return an empty array if any list is empty', () =>
