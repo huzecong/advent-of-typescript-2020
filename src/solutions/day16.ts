@@ -54,7 +54,7 @@ export default class Day16 extends Solution {
     const match = utils.graph.maximalMatching(graph)
     assert(match.size === n * 2)
     return utils.product(this.myTicket.mapFilter((x, idx) => {
-      const field: string = match.get(idx)! as string
+      const field = match.get(idx)! as string
       if (field.startsWith('departure')) return x
       return null
     }))

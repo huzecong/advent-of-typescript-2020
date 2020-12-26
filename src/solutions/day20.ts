@@ -57,8 +57,7 @@ export default class Day20 extends Solution {
     else if (edge === 'U') line = tile.slice([0, 1])
     else line = tile.slice(-1)
     assert(line.size === tile.shape[0])
-    const repr = line.tolist().flat().reduce((acc, x) => acc * 2 + x)
-    return repr
+    return line.tolist().flat().reduce((acc, x) => acc * 2 + x)
   }
 
   @memoize()
@@ -74,9 +73,9 @@ export default class Day20 extends Solution {
         for (const rotation of _.range(4))
           for (const flip of [false, true]) {
             const config = {id: id, rotation: rotation, flip: flip}
-            let ok = true
-            if (x > 0) ok = ok && this.getEdge(config, 'U') === this.getEdge(board.get(x - 1, y), 'D')
-            if (y > 0) ok = ok && this.getEdge(config, 'L') === this.getEdge(board.get(x, y - 1), 'R')
+            const ok =
+              (x === 0 || this.getEdge(config, 'U') === this.getEdge(board.get(x - 1, y), 'D')) &&
+              (y === 0 || this.getEdge(config, 'L') === this.getEdge(board.get(x, y - 1), 'R'))
             if (!ok) continue
             board.set(x, y, config)
             chosen.add(id)

@@ -1,8 +1,7 @@
-import assert from 'assert'
 import _ from 'lodash'
 
 import Solution from '../solution'
-import {int} from '../utils'
+import {int, Iterable} from '../utils'
 import Day1 from './day1'
 
 export default class Day9 extends Solution {
@@ -16,10 +15,9 @@ export default class Day9 extends Solution {
   }
 
   protected solvePart1(): number {
-    for (let i = Day9.LOOKBACK; i < this.nums.length; ++i)
-      if (Day1.findPair(this.nums.slice(i - Day9.LOOKBACK, i), this.nums[i]) === null)
-        return this.nums[i]
-    assert(false)
+    const idx = Iterable.range_(Day9.LOOKBACK, this.nums.length)
+      .first({predicate: i => Day1.findPair(this.nums.slice(i - Day9.LOOKBACK, i), this.nums[i]) === null})!
+    return this.nums[idx]
   }
 
   protected solvePart2(): number {

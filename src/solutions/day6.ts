@@ -7,7 +7,8 @@ export default class Day6 extends Solution {
 
   constructor(inputPath: string) {
     super(inputPath)
-    this.groups = this.input.split('\n\n').map(s => s.split('\n').map(s => s.split('')))
+    this.groups = this.input.split('\n\n')
+      .map(s => s.split('\n').map(s => s.split('')))
   }
 
   protected solvePart1(): number {

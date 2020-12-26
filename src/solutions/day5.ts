@@ -1,6 +1,7 @@
 import _ from 'lodash'
 
 import Solution from '../solution'
+import {Iterable} from '../utils'
 
 export default class Day5 extends Solution {
   private readonly passes: string[]
@@ -41,9 +42,7 @@ export default class Day5 extends Solution {
 
   protected solvePart2(): number {
     const seats = new Set(this.seatNumbers)
-    for (let x = _.min(this.seatNumbers)! + 1; ; ++x) {
-      if (!seats.has(x) && seats.has(x - 1) && seats.has(x + 1))
-        return x
-    }
+    return Iterable.count(_.min(this.seatNumbers)! + 1)
+      .first({predicate: x => !seats.has(x) && seats.has(x - 1) && seats.has(x + 1)})!
   }
 }

@@ -2,6 +2,7 @@ import _ from 'lodash'
 
 import Solution from '../solution'
 import * as utils from '../utils'
+import {Iterable} from '../utils'
 
 type Point = '#' | 'L' | '.'
 type Board = Point[][]
@@ -10,9 +11,15 @@ type GetNeighborFn = (board: Board, x: number, y: number) => number
 export default class Day11 extends Solution {
   private readonly board: Board
 
+  private readonly rows: number
+
+  private readonly cols: number
+
   constructor(inputPath: string) {
     super(inputPath)
     this.board = this.input.split('\n').map(x => x.split('') as Point[])
+    this.rows = this.board.length
+    this.cols = this.board[0].length
   }
 
   private iterate(board: Board, emptyThreshold: number, fn: GetNeighborFn): number {
@@ -20,8 +27,8 @@ export default class Day11 extends Solution {
     do {
       const newBoard: Board = _.cloneDeep(board)
       changed = false
-      for (const x of _.range(board.length))
-        for (const y of _.range(board[0].length)) {
+      for (const x of _.range(this.rows))
+        for (const y of _.range(this.cols)) {
           if (board[x][y] === '.') continue
           const cnt = fn(board, x, y)
           if (board[x][y] === '#' && cnt >= emptyThreshold) newBoard[x][y] = 'L'
@@ -36,7 +43,7 @@ export default class Day11 extends Solution {
   static DIRECTIONS = utils.cartesianProduct([-1, 0, 1], [-1, 0, 1]).filter(x => !_.isEqual(x, [0, 0]))
 
   private isValid(x: number, y: number): boolean {
-    return x >= 0 && x < this.board.length && y >= 0 && y < this.board[0].length
+    return x >= 0 && x < this.rows && y >= 0 && y < this.cols
   }
 
   protected solvePart1(): number {

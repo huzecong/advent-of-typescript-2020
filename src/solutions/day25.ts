@@ -1,14 +1,5 @@
-import 'ix/add/iterable-operators/findIndex'
-import 'ix/add/iterable-operators/reduce'
-import 'ix/add/iterable-operators/scan'
-import 'ix/add/iterable/from'
-import 'ix/add/iterable/range'
-
-import {IterableX as Iterable} from 'ix/iterable'
-
 import Solution from '../solution'
-import * as utils from '../utils'
-import {int} from '../utils'
+import {int, Iterable} from '../utils'
 
 export default class Day25 extends Solution {
   private readonly cardKey: number
@@ -23,13 +14,13 @@ export default class Day25 extends Solution {
   static MOD = 20201227
 
   private findLoop(key: number): number {
-    return Iterable.from(utils.count())
+    return Iterable.count()
       .scan({seed: 1, callback: (acc, x) => acc * 7 % Day25.MOD})
       .findIndex({predicate: x => x === key})
   }
 
   private doLoop(subject: number, loop: number): number {
-    return Iterable.range(0, loop)
+    return Iterable.range_(loop)
       .reduce({seed: 1, callback: acc => acc * subject % Day25.MOD})
   }
 

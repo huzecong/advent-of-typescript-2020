@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 import Solution from '../solution'
-import {int} from '../utils'
+import {int, Iterable} from '../utils'
 
 export default class Day15 extends Solution {
   private readonly numbers: number[]

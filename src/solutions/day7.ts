@@ -17,9 +17,8 @@ class Tree<Node, Edge> {
 
     function visit(node: Node): T {
       if (result.has(node)) return result.get(node)
-      const children =
-        [...tree.get(node)!.entries()]
-          .map(([child, edge]) => ({edge: edge, value: visit(child)}))
+      const children = [...tree.get(node)!.entries()]
+        .map(([child, edge]) => ({edge: edge, value: visit(child)}))
       const value = fn(node, children)
       result.set(node, value)
       return value

@@ -3,5 +3,9 @@ export * from './collections'
 export * as graph from './graph'
 export * from './iterator'
 export * from './number'
+export {Iterable} from './patch-iterator'
 export * from './string'
-import './patch-array'  // side-effects import
+
+// Side-effects imports
+import './patch-array'
+import './patch-iterator'

@@ -41,7 +41,7 @@ describe('solutions', () => {
   checkDay(20, 79412832860579, 2155)
   checkDay(21, 2098, 'ppdplc,gkcplx,ktlh,msfmt,dqsbql,mvqkdj,ggsz,hbhsx')
   checkDay(22, 35370, 36246)
-  checkDay(23, '89573246', 2029056128)
+  checkDay(23, '89573246', 2029056128, 10000)
   checkDay(24, 377, 4231)
   checkDay(25, 6198540, 0)
 })

@@ -1,8 +1,6 @@
-import _ from 'lodash'
-
 import Solution from '../solution'
-import * as Utils from '../utils'
-import {int} from '../utils'
+import * as utils from '../utils'
+import {int, Iterable} from '../utils'
 
 class Mask {
   static MAX_LENGTH = 31
@@ -17,7 +15,7 @@ class Mask {
     const maskChars = mask.split('').reverse()
     this.mask = maskChars.join('')
     this.xBase = maskChars.mapFilter((value, index) => value === 'X' ? 2 ** index : null)
-    this.xValues = Utils.cartesianProduct(...Utils.array([0, 1], this.xBase.length))
+    this.xValues = utils.cartesianProduct(...utils.array([0, 1], this.xBase.length))
   }
 
   apply(x: number, zero: number | null = 0, one: number | null = 1): number {
@@ -41,7 +39,7 @@ class Mask {
     const ret = []
     for (const values of this.xValues) {
       let cur = y
-      for (const [base, val] of Utils.zip(this.xBase, values))
+      for (const [base, val] of utils.zip(this.xBase, values))
         if (val === 1) cur += base
       ret.push(cur)
     }
@@ -79,7 +77,7 @@ export default class Day14 extends Solution {
     const memory: Map<number, number> = new Map()
     for (const line of this.lines) {
       if (line.startsWith('mask = ')) {
-        mask = new Mask(Utils.removePrefix(line, 'mask = '))
+        mask = new Mask(utils.removePrefix(line, 'mask = '))
       } else {
         const match = memRegex.exec(line)
         const address = int(match![1])
@@ -87,6 +85,6 @@ export default class Day14 extends Solution {
         setMemoryCallback(memory, address, value, mask!)
       }
     }
-    return _.sum([...memory.values()])
+    return Iterable.from(memory.values()).sum()
   }
 }
